@@ -1,4 +1,4 @@
-# codeaudit
+# tracefile
 
 A CLI that tells you why a file exists: when it was created, who created it, who currently imports it, and how it's grown over time.
 
@@ -6,15 +6,25 @@ A CLI that tells you why a file exists: when it was created, who created it, who
 
 ## Why?
 
-Structure tools (import graphs, dependency analyzers) tell you *what* connects to what. They don't tell you the story behind a file: who wrote it, when, whether it's actually used anymore, or whether it's quietly ballooned into something that needs splitting. `codeaudit` combines git history with your project's real import graph to answer "why does this file exist, and is it still earning its place?" in one command.
+Structure tools (import graphs, dependency analyzers) tell you *what* connects to what. They don't tell you the story behind a file: who wrote it, when, whether it's actually used anymore, or whether it's quietly ballooned into something that needs splitting. `tracefile` combines git history with your project's real import graph to answer "why does this file exist, and is it still earning its place?" in one command.
 
 ## Installation
 
-This isn't published to npm yet - run it from source:
+```bash
+npm install -g tracefile
+```
+
+Or run without installing:
 
 ```bash
-git clone https://github.com/codebyrashel/codeaudit.git
-cd codeaudit
+npx tracefile <file>
+```
+
+### From source (for contributing)
+
+```bash
+git clone https://github.com/codebyrashel/tracefile.git
+cd tracefile
 npm install
 npm run build
 npm link
@@ -23,7 +33,7 @@ npm link
 ## Usage
 
 ```bash
-codeaudit <file> [options]
+tracefile <file> [options]
 ```
 
 - `<file>` - required, path to the file to audit
@@ -34,19 +44,19 @@ codeaudit <file> [options]
 
 ```bash
 # Audit a file in the current project
-codeaudit src/services/payment.ts
+tracefile src/services/payment.ts
 
 # Use a tsconfig in a different location
-codeaudit src/utils/helpers.ts --tsconfig ./packages/api/tsconfig.json
+tracefile src/utils/helpers.ts --tsconfig ./packages/api/tsconfig.json
 
 # Get JSON output
-codeaudit src/services/payment.ts --json
+tracefile src/services/payment.ts --json
 ```
 
 ## Example output
 
 ```
-$ codeaudit src/analyzers/git-history.ts
+$ tracefile src/analyzers/git-history.ts
 
 📄 src/analyzers/git-history.ts
 
@@ -68,7 +78,7 @@ Used by (2):
 
 ## Known limitations
 
-- **Single-file scans only.** `codeaudit` audits one file per run - no directory-wide or "audit everything" mode yet.
+- **Single-file scans only.** `tracefile` audits one file per run - no directory-wide or "audit everything" mode yet.
 - **No commit message summarization.** The tool reports *when* and *by whom* a file changed, not *why* in prose - reading the actual commit messages/diffs is still on you. A future version could summarize this, but that's a meaningfully bigger feature (real diff/message analysis) deliberately left out of v1.
 - **Renamed/moved files may lose early history.** Git's rename detection is heuristic, not guaranteed - a file that was renamed or moved may show a shorter history than its true lifetime if git didn't track the rename as a rename.
 - **Requires the file to be part of the TypeScript project.** If a file isn't included by the given `tsconfig.json` (wrong `--tsconfig` path, or excluded via `tsconfig`'s own `include`/`exclude`), the "Used by" section can't be computed.

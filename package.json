@@ -1,5 +1,5 @@
 {
-  "name": "codeaudit",
+  "name": "tracefile",
   "version": "0.1.0",
   "type": "module",
   "private": true,
@@ -10,11 +10,8 @@
     "test": "node --test src/**/*.test.ts"
   },
   "bin": {
-    "codeaudit": "dist/cli.mjs"
+    "tracefile": "dist/cli.mjs"
   },
-  "files": [
-    "dist"
-  ],
   "keywords": [
     "cli",
     "typescript",
@@ -28,12 +25,15 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codebyrashel/codeaudit.git"
+    "url": "git+https://github.com/codebyrashel/tracefile.git"
   },
   "bugs": {
-    "url": "https://github.com/codebyrashel/codeaudit/issues"
+    "url": "https://github.com/codebyrashel/tracefile/issues"
   },
-  "homepage": "https://github.com/codebyrashel/codeaudit#readme",
+  "homepage": "https://github.com/codebyrashel/tracefile#readme",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "chalk": "^6.0.0",
     "commander": "^15.0.0",

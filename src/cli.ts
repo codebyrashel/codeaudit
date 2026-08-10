@@ -11,8 +11,8 @@ import { getGrowthStats } from "./analyzers/growth.ts";
 const program = new Command();
 
 program
-  .name("codeaudit")
-  .description("Show why a file exists: git history, who imports it, and how it's grown.")
+  .name("tracefile")
+  .description("Show why a file exists: git history, who imports it, and how it's grown over time.")
   .version("0.1.0");
 
 program

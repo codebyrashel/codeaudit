@@ -7,7 +7,7 @@ import { simpleGit } from "simple-git";
 import { getGrowthStats } from "./growth.ts";
 
 async function makeTestRepo(): Promise<string> {
-  const dir = mkdtempSync(join(tmpdir(), "codeaudit-growth-test-"));
+  const dir = mkdtempSync(join(tmpdir(), "tracefile-growth-test-"));
   const git = simpleGit(dir);
 
   await git.init();

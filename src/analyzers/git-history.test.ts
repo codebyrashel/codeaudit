@@ -7,7 +7,7 @@ import { simpleGit } from "simple-git";
 import { getFileHistory } from "./git-history.ts";
 
 async function makeTestRepo(): Promise<string> {
-  const dir = mkdtempSync(join(tmpdir(), "codeaudit-test-"));
+  const dir = mkdtempSync(join(tmpdir(), "tracefile-test-"));
   const git = simpleGit(dir);
 
   await git.init();
