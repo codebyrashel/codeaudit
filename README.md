@@ -2,8 +2,6 @@
 
 A CLI that tells you why a file exists: when it was created, who created it, who currently imports it, and how it's grown over time.
 
-> **Status:** core functionality complete, not yet published to npm.
-
 ## Why?
 
 Structure tools (import graphs, dependency analyzers) tell you *what* connects to what. They don't tell you the story behind a file: who wrote it, when, whether it's actually used anymore, or whether it's quietly ballooned into something that needs splitting. `tracefile` combines git history with your project's real import graph to answer "why does this file exist, and is it still earning its place?" in one command.
