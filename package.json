@@ -1,6 +1,6 @@
 {
   "name": "tracefile",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "Show why a file exists: git history, who imports it, and how it's grown over time.",
   "main": "index.js",
