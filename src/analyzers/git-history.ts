@@ -14,7 +14,12 @@ export async function getFileHistory(
 ): Promise<FileHistory | null> {
   const git = simpleGit(repoPath);
 
-  const log = await git.log({ file: filePath });
+  let log;
+  try {
+    log = await git.log({ file: filePath });
+  } catch {
+    return null;
+  }
 
   if (log.all.length === 0) {
     return null;
