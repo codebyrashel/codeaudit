@@ -18,7 +18,8 @@ program
 program
   .argument("<file>", "path to the file to audit")
   .option("--tsconfig <path>", "path to tsconfig.json", "./tsconfig.json")
-  .action(async (fileArg: string, options: { tsconfig: string }) => {
+  .option("--json", "output results as JSON instead of formatted text")
+  .action(async (fileArg: string, options: { tsconfig: string; json?: boolean }) => {
     const repoPath = process.cwd();
     const absoluteFilePath = resolve(repoPath, fileArg);
 
@@ -39,6 +40,11 @@ program
 
     const project = new Project({ tsConfigFilePath: options.tsconfig });
     const usedBy = getUsedBy(project, absoluteFilePath);
+
+    if (options.json) {
+      console.log(JSON.stringify({ file: fileArg, history, growth, usedBy }, null, 2));
+      return;
+    }
 
     printReport(fileArg, history, growth, usedBy);
   });
