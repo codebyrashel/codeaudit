@@ -3,12 +3,37 @@
   "version": "0.1.0",
   "type": "module",
   "private": true,
+  "description": "Show why a file exists: git history, who imports it, and how it's grown over time.",
   "main": "index.js",
   "scripts": {
     "build": "tsdown src/cli.ts --format esm",
     "test": "node --test src/**/*.test.ts"
   },
-  "keywords": [],
+  "bin": {
+    "codeaudit": "dist/cli.mjs"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "cli",
+    "typescript",
+    "git",
+    "code-archaeology",
+    "developer-tools",
+    "static-analysis",
+    "ts-morph"
+  ],
+  "author": "Md. Rashel (https://github.com/codebyrashel)",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codebyrashel/codeaudit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/codebyrashel/codeaudit/issues"
+  },
+  "homepage": "https://github.com/codebyrashel/codeaudit#readme",
   "dependencies": {
     "chalk": "^6.0.0",
     "commander": "^15.0.0",
